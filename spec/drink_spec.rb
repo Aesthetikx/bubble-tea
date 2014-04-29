@@ -5,7 +5,7 @@ describe Drink do
   context 'drink attributes' do
 
     before :each do
-      @drink = Drink.new { temperature: :cold, bubbles: :black, size: :medium, type: :milk, flavor: :coconut }
+      @drink = Drink.new { temperature: :cold, bubbles: :black, size: :medium, type: :milk_tea, flavor: :coconut }
     end
 
     it 'has a temperature' do
@@ -21,7 +21,7 @@ describe Drink do
     end
 
     it 'has a type' do
-      @drink.type.should eq(:milk)
+      @drink.type.should eq(:milk_tea)
     end
 
     it 'has a flavor' do
@@ -32,7 +32,7 @@ describe Drink do
       drink = Drink.new
       drink.temperature.should eq(:cold)
       drink.size.should eq(:medium)
-      drink.type.should eq(:milk)
+      drink.type.should eq(:milk_tea)
       drink.bubbles.should eq(:none)
       drink.flavor.should eq(:coconut)
     end
