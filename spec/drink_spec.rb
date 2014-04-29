@@ -28,6 +28,14 @@ describe Drink do
       @drink.type.should eq(:coconut)
     end
 
+    it 'has sane defaults' do
+      drink = Drink.new
+      drink.temperature.should eq(:cold)
+      drink.size.should eq(:medium)
+      drink.type.should eq(:milk)
+      drink.bubbles.should eq(:none)
+      drink.flavor.should eq(:coconut)
+    end
   end
 
 end
