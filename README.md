@@ -10,26 +10,37 @@ gem install bubble-tea
 ###Usage
 
 ```ruby
-#Get all milk teas
-BubbleTea.milk
+# Get all teas
+BubbleTea.all
 
-#Get all hot teas
-BubbleTea.hot
+# Generate a random tea
+BubbleTea.any
 
-#Specify a flavor
+# Specify a flavor
 BubbleTea.any do
   with :coconut
 end
 
-#Filter a flavor
+# Filter a flavor
 BubbleTea.any do
   without :taro
 end
 
-#Complete example
-BubbleTea.milk do
+# Specify a base tea
+Snowbubble.all do
+  with :peach
+end
+
+# Valid base types
+[CalpicoCooler, FusionTea, Smoothie, Snowbubble, MilkTea, TurtleTea, TikiTea, ThaiTea]
+
+# Get all hot teas
+BubbleTea.hot
+
+# Complex example
+FusionTea.any do
   size :large
-  bubbles :black
-  with :oreo
+  bubbles :mango_stars
+  with :strawberry
 end
 ```
