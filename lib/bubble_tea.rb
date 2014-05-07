@@ -1,3 +1,1 @@
-class bubble_tea
-
-end
+require 'bubble_tea/drink'
