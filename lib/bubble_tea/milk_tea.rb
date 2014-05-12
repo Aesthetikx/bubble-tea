@@ -1,0 +1,3 @@
+class MilkTea < BubbleTea
+
+end
