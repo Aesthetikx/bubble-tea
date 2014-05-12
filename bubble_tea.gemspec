@@ -6,4 +6,6 @@ Gem::Specification.new do |s|
   s.authors  = ['John DeSilva', 'Nick Adamowicz']
   s.files = ['lib/bubble_tea.rb']
   s.license = 'MIT'
+
+  s.add_development_dependency 'rspec'
 end
