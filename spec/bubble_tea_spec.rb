@@ -19,4 +19,15 @@ describe BubbleTea do
       ].sort_by { |klass| klass.name })
     end
   end
+
+  it 'returns a list of drinks for #all' do
+    BubbleTea.all.each do |tea|
+      expect(tea).to be_a(Drink)
+    end
+  end
+
+  it 'returns one drink for #any' do
+    expect(BubbleTea.any).to be_a(Drink)
+  end
+
 end
