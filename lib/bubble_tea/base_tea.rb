@@ -44,10 +44,18 @@ class BaseTea
     @drinks.select! { |drink| drink.temperature == :cold }
   end
 
+  def medium
+    @drinks.select! { |drink| drink.size == :medium }
+  end
+
+  def large
+    @drinks.select! { |drink| drink.size == :large }
+  end
+
   def self.all &block
     temp = self.new
     if block_given?
-      temp.instance_eval &block
+      temp.instance_eval(&block)
     end
     temp.drinks
   end
