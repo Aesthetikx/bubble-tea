@@ -42,4 +42,31 @@ describe BaseTea do
 
   end
 
+  context 'flavor' do
+
+    it 'removes teas for without' do
+      teas = BaseTea.all do
+        without :taro
+        without :oreo
+      end
+
+      teas.each do |tea|
+        expect(tea.flavor).not_to eq :taro
+        expect(tea.flavor).not_to eq :oreo
+      end
+    end
+
+    it 'includes teas for with' do
+      teas = BaseTea.all do
+        with :taro
+        with :oreo
+      end
+
+      flavors = teas.collect { |tea| tea.flavor }.uniq
+
+      expect(flavors).to eq [:oreo, :taro]
+    end
+
+  end
+
 end

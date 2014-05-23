@@ -2,6 +2,9 @@ class BaseTea
 
   attr_accessor :drinks
 
+  attr_accessor :without_filters
+  attr_accessor :with_filters
+
   def initialize
     @flavors = self.class.flavors
     @types = self.class.types
@@ -10,6 +13,8 @@ class BaseTea
     @bubbles = self.class.bubbles
 
     @drinks = []
+    @with_filters = []
+    @without_filters = []
     make_permutations
   end
 
@@ -29,11 +34,11 @@ class BaseTea
   end
 
   def with flavor
-    @drinks.reject! { |drink| drink.flavor != flavor }
+    @with_filters << flavor
   end
 
   def without flavor
-    @drinks.reject! { |drink| drink.flavor == flavor }
+    @without_filters << flavor
   end
 
   def hot
@@ -57,6 +62,8 @@ class BaseTea
     if block_given?
       temp.instance_eval(&block)
     end
+    temp.filter_without
+    temp.filter_with
     temp.drinks
   end
 
@@ -104,5 +111,17 @@ class BaseTea
       :passionfruit, :peach, :pineapple, :rasberry, :red_bean, :strawberry, 
       :taro, :vanilla, :wildberry]
   end
-  
+
+  def filter_with
+    unless with_filters.empty?
+      @drinks.select! { |drink| with_filters.include? drink.flavor }
+    end
+  end
+
+  def filter_without
+    unless without_filters.empty?
+      @drinks.reject! { |drink| without_filters.include? drink.flavor }
+    end
+  end
+
 end
