@@ -36,6 +36,14 @@ class BaseTea
     @drinks.reject! { |drink| drink.flavor == flavor }
   end
 
+  def hot
+    @drinks.select! { |drink| drink.temperature == :hot }
+  end
+
+  def cold
+    @drinks.select! { |drink| drink.temperature == :cold }
+  end
+
   def self.all &block
     temp = self.new
     if block_given?
